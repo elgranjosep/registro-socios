@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL GRAN JOSEP - Cannabis Legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --verde-oscuro: #2D5E40;
+            --verde-medio: #5A7F5A;
+            --verde-claro: #B6D77A;
+            --blanco: #F5F5F5;
+            --dorado: #D4AF37;
+            --alerta: #FFD700;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--verde-oscuro);
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(45,94,64,0.7), rgba(45,94,64,0.7)),
+                        url('https://images.unsplash.com/photo-1589952216389-7e21b23f0a5d') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background: rgba(45,94,64,0.9);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dorado);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Variedades */
+        .variedades {
+            padding: 60px 20px;
+            background: var(--blanco);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-header {
+            padding: 15px;
+            background: var(--verde-claro);
+        }
+
+        /* Trazabilidad */
+        .trazabilidad {
+            padding: 60px 20px;
+            background: var(--blanco);
+        }
+
+        .registro-form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            background: var(--verde-oscuro);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .alert {
+            background: var(--alerta);
+            color: var(--verde-oscuro);
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* Modal de Registro */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        /* Contacto */
+        .contacto {
+            padding: 60px 20px;
+            background: var(--verde-claro);
+        }
+
+        .contacto-item {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .contacto-icon {
+            margin-right: 10px;
+            color: var(--dorado);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">EL GRAN JOSEP</div>
+            <div class="menu">
+                <a href="#variedades">Variedades</a>
+                <a href="#trazabilidad">Trazabilidad</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+        <h1>Cannabis con Propósito</h1>
+        <p>Cultivamos con pasión, cosechamos con responsabilidad</p>
+        <a href="#registroModal" class="btn">Únete a Nuestro Club</a>
+    </header>
+
+    <!-- Sección Variedades (8 completas) -->
+    <section id="variedades" class="variedades">
+        <h2>Nuestras Variedades</h2>
+        <div class="grid">
+            <!-- Presta Kush -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3335509/pexels-photo-3335509.jpeg">
+                <div class="card-header"><h3>Presta Kush</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Índica 80% / Sativa 20%</p>
+                    <p><strong>THC:</strong> 22-26% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Relajante, sedante, calma muscular</p>
+                    <p><strong>Aroma:</strong> Terroso con notas dulces y especiadas</p>
+                    <p><strong>Consumo:</strong> Noche - Vaporización 190-220°C</p>
+                    <p><strong>Medicinal:</strong> Ansiedad, insomnio, dolor muscular</p>
+                </div>
+            </div>
+            
+            <!-- Risas Kush -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3761509/pexels-photo-3761509.jpeg">
+                <div class="card-header"><h3>Risas Kush</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Índica 70% / Sativa 30%</p>
+                    <p><strong>THC:</strong> 20-24% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Euforia, risa fácil, relajación sin pesadez</p>
+                    <p><strong>Aroma:</strong> Afrutado con toques de caramelo y limón</p>
+                    <p><strong>Consumo:</strong> Tarde-noche - Porros o vaporizador</p>
+                    <p><strong>Medicinal:</strong> Estrés, ansiedad, depresión leve</p>
+                </div>
+            </div>
+            
+            <!-- Widonesia -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/3951634/pexels-photo-3951634.jpeg">
+                <div class="card-header"><h3>Widonesia</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Sativa 70% / Índica 30%</p>
+                    <p><strong>THC:</strong> 18-22% | <strong>CBD:</strong> 1-5%</p>
+                    <p><strong>Efectos:</strong> Energizante, creativo, mejora el enfoque</p>
+                    <p><strong>Aroma:</strong> Cítrico con notas florales y fondo terroso</p>
+                    <p><strong>Consumo:</strong> Mañana/mediodía - Vaporización 160-180°C</p>
+                    <p><strong>Medicinal:</strong> Fatiga, falta de concentración</p>
+                </div>
+            </div>
+            
+            <!-- Amnesia -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg">
+                <div class="card-header"><h3>Amnesia</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Sativa 80% / Índica 20%</p>
+                    <p><strong>THC:</strong> 22-27% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Muy cerebral, eufórico, estimula creatividad</p>
+                    <p><strong>Aroma:</strong> Incienso, limón y madera</p>
+                    <p><strong>Consumo:</strong> Mañana/tarde - Vaporizador 160-175°C</p>
+                    <p><strong>Medicinal:</strong> Estrés, fatiga mental</p>
+                </div>
+            </div>
+            
+            <!-- Alien -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/1437263/pexels-photo-1437263.jpeg">
+                <div class="card-header"><h3>Alien</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Índica 60% / Sativa 40%</p>
+                    <p><strong>THC:</strong> 20-23% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Relajación corporal sin sedación total</p>
+                    <p><strong>Aroma:</strong> Dulce con frutas tropicales</p>
+                    <p><strong>Consumo:</strong> Tarde-noche - Porros o bong</p>
+                    <p><strong>Medicinal:</strong> Ansiedad, insomnio leve</p>
+                </div>
+            </div>
+            
+            <!-- Bárbara Kush -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg">
+                <div class="card-header"><h3>Bárbara Kush</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Índica 90% / Sativa 10%</p>
+                    <p><strong>THC:</strong> 18-22% | <strong>CBD:</strong> 5-10%</p>
+                    <p><strong>Efectos:</strong> Relajación total con CBD</p>
+                    <p><strong>Aroma:</strong> Pino, especias y notas terrosas</p>
+                    <p><strong>Consumo:</strong> Noche - Extracciones/aceites</p>
+                    <p><strong>Medicinal:</strong> Insomnio, dolor crónico</p>
+                </div>
+            </div>
+            
+            <!-- Apple Banana -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4224093/pexels-photo-4224093.jpeg">
+                <div class="card-header"><h3>Apple Banana</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Híbrido 50/50</p>
+                    <p><strong>THC:</strong> 23-27% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Euforia intensa seguida de relajación</p>
+                    <p><strong>Aroma:</strong> Manzana y banana madura</p>
+                    <p><strong>Consumo:</strong> Tarde - Vaporización 170-190°C</p>
+                    <p><strong>Medicinal:</strong> Estrés, depresión, fatiga</p>
+                </div>
+            </div>
+            
+            <!-- Runtz -->
+            <div class="card">
+                <img src="https://images.pexels.com/photos/730547/pexels-photo-730547.jpeg">
+                <div class="card-header"><h3>Runtz</h3></div>
+                <div class="card-body">
+                    <p><strong>Genética:</strong> Híbrido 50/50</p>
+                    <p><strong>THC:</strong> 24-28% | <strong>CBD:</strong> 0.1-0.5%</p>
+                    <p><strong>Efectos:</strong> Felicidad extrema con relajación funcional</p>
+                    <p><strong>Aroma:</strong> Caramelo y frutas tropicales</p>
+                    <p><strong>Consumo:</strong> Tarde-noche - Extracciones</p>
+                    <p><strong>Medicinal:</strong> Estrés, ansiedad, depresión leve</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Trazabilidad IRCCA (Completa) -->
+    <section id="trazabilidad" class="trazabilidad">
+        <h2>Trazabilidad IRCCA</h2>
+        
+        <!-- Registro de Plantas -->
+        <div class="registro-form">
+            <h3>Registro de Cultivo</h3>
+            <div class="alert">Máximo 99 plantas en floración</div>
+            <div class="form-group">
+                <label>ID de Planta (único):</label>
+                <input type="text" id="plantaId" required>
+            </div>
+            <div class="form-group">
+                <label>Variedad:</label>
+                <select id="variedadPlanta" required>
+                    <option>Presta Kush</option>
+                    <option>Risas Kush</option>
+                    <option>Widonesia</option>
+                    <option>Amnesia</option>
+                    <option>Alien</option>
+                    <option>Bárbara Kush</option>
+                    <option>Apple Banana</option>
+                    <option>Runtz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Etapa:</label>
+                <select id="etapaPlanta" required>
+                    <option>Vegetativo</option>
+                    <option>Floración</option>
+                </select>
+            </div>
+            <button class="btn" onclick="registrarPlanta()">Registrar Planta</button>
+        </div>
+
+        <!-- Registro de Cosechas -->
+        <div class="registro-form">
+            <h3>Registro de Cosecha</h3>
+            <div class="form-group">
+                <label>Fecha de Siembra:</label>
+                <input type="date" id="fechaSiembra" required>
+            </div>
+            <div class="form-group">
+                <label>Fecha de Cosecha:</label>
+                <input type="date" id="fechaCosecha" required>
+            </div>
+            <div class="form-group">
+                <label>Cantidad (g):</label>
+                <input type="number" id="cantidadCosecha" required>
+            </div>
+            <button class="btn" onclick="registrarCosecha()">Registrar Cosecha</button>
+        </div>
+
+        <!-- Distribución a Socios -->
+        <div class="registro-form">
+            <h3>Entregas a Socios</h3>
+            <div class="alert">Máximo 40g/mes por socio</div>
+            <div class="form-group">
+                <label>Socio:</label>
+                <select id="socio" required>
+                    <option>Juan Pérez</option>
+                    <option>María García</option>
+                    <option>Pedro González</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Cantidad (g):</label>
+                <input type="number" id="cantidadEntrega" max="40" required>
+            </div>
+            <button class="btn" onclick="registrarEntrega()">Registrar Entrega</button>
+        </div>
+
+        <!-- Registro de Insumos -->
+        <div class="registro-form">
+            <h3>Insumos Utilizados</h3>
+            <div class="form-group">
+                <label>Producto:</label>
+                <input type="text" id="productoInsumo" required>
+            </div>
+            <div class="form-group">
+                <label>Cantidad:</label>
+                <input type="number" id="cantidadInsumo" required>
+            </div>
+            <button class="btn" onclick="registrarInsumo()">Registrar Insumo</button>
+        </div>
+
+        <!-- Historial -->
+        <h3>Registros Oficiales</h3>
+        <table>
+            <thead style="background: var(--verde-claro);">
+                <tr>
+                    <th>Acción</th>
+                    <th>Detalles</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="registrosTable"></tbody>
+        </table>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto">
+        <h2>Contacto</h2>
+        <div class="contacto-item">
+            <i class="fas fa-phone contacto-icon"></i>
+            <p>+598 12345 6789</p>
+        </div>
+        <div class="contacto-item">
+            <i class="fas fa-envelope contacto-icon"></i>
+            <p>info@elgranjosep.uy</p>
+        </div>
+    </section>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro de Socio</h2>
+            <form id="registroForm" onsubmit="registrarSocio(event)">
+                <div class="form-group">
+                    <label>Nombre Completo:</label>
+                    <input type="text" id="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Cédula Uruguaya:</label>
+                    <input type="text" id="cedula" pattern="[0-9]{8}" required>
+                </div>
+                <div class="form-group">
+                    <label>Fecha Nacimiento:</label>
+                    <input type="date" id="nacimiento" required>
+                </div>
+                <div class="form-group">
+                    <label>Domicilio en Uruguay:</label>
+                    <input type="text" id="domicilio" required>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="exclusividad" required>
+                        Declaro no estar registrado como autocultivador ni comprador en farmacias
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="compromiso" required>
+                        Me comprometo a no comercializar el cannabis recibido
+                    </label>
+                </div>
+                <button type="submit" class="btn">Enviar Registro</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const registros = [];
+        let stockTotal = 0;
+
+        // Control de modal
+        document.querySelector('.btn').addEventListener('click', e => {
+            e.preventDefault();
+            document.getElementById('registroModal').style.display = 'block';
+        });
+
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('registroModal').style.display = 'none';
+        });
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('registroModal')) {
+                document.getElementById('registroModal').style.display = 'none';
+            }
+        };
+
+        // Registro de socio
+        function registrarSocio(e) {
+            e.preventDefault();
+            
+            const nacimiento = new Date(document.getElementById('nacimiento').value);
+            const edad = Math.floor((Date.now() - nacimiento) / (365.25 * 24 * 60 * 60 * 1000));
+            
+            if (edad < 18) {
+                return alert('Debe ser mayor de 18 años');
+            }
+
+            const socio = {
+                nombre: document.getElementById('nombre').value,
+                cedula: document.getElementById('cedula').value,
+                nacimiento: document.getElementById('nacimiento').value,
+                domicilio: document.getElementById('domicilio').value,
+                exclusividad: document.getElementById('exclusividad').checked,
+                compromiso: document.getElementById('compromiso').checked
+            };
+
+            // En producción usar base de datos segura
+            localStorage.setItem('socio_' + socio.cedula, JSON.stringify(socio));
+            alert('¡Registro exitoso!');
+            document.getElementById('registroForm').reset();
+            document.getElementById('registroModal').style.display = 'none';
+        }
+
+        // Sistema de trazabilidad
+        function registrarPlanta() {
+            const id = document.getElementById('plantaId').value;
+            const variedad = document.getElementById('variedadPlanta').value;
+            const etapa = document.getElementById('etapaPlanta').value;
+
+            if (!id || !variedad) return alert('Complete todos los campos');
+
+            const floracionCount = registros.filter(r => 
+                r.detalle.includes('Floración')
+            ).length;
+
+            if (etapa === 'Floración' && floracionCount >= 99) {
+                return alert('Límite de 99 plantas en floración alcanzado');
+            }
+
+            registros.push({
+                accion: 'Registro de Planta',
+                detalle: `ID: ${id} | Variedad: ${variedad} | Etapa: ${etapa}`,
+                fecha: new Date().toLocaleDateString()
+            });
+            actualizarTabla();
+        }
+
+        function registrarCosecha() {
+            const fechaSiembra = document.getElementById('fechaSiembra').value;
+            const fechaCosecha = document.getElementById('fechaCosecha').value;
+            const cantidad = document.getElementById('cantidadCosecha').value;
+
+            if (!fechaSiembra || !fechaCosecha || !cantidad) 
+                return alert('Complete todos los campos');
+
+            stockTotal += parseInt(cantidad);
+            registros.push({
+                accion: 'Cosecha',
+                detalle: `Siembra: ${fechaSiembra} | Cosecha: ${fechaCosecha} | Cantidad: ${cantidad}g | Stock: ${stockTotal}g`,
+                fecha: new Date().toLocaleDateString()
+            });
+            actualizarTabla();
+        }
+
+        function registrarEntrega() {
+            const socio = document.getElementById('socio').value;
+            const cantidad = document.getElementById('cantidadEntrega').value;
+
+            if (!socio || !cantidad || cantidad > 40) 
+                return alert('Cantidad inválida o socio no seleccionado');
+
+            stockTotal -= parseInt(cantidad);
+            registros.push({
+                accion: 'Entrega a Socio',
+                detalle: `Socio: ${socio} | Cantidad: ${cantidad}g | Stock restante: ${stockTotal}g`,
+                fecha: new Date().toLocaleDateString()
+            });
+            actualizarTabla();
+        }
+
+        function registrarInsumo() {
+            const producto = document.getElementById('productoInsumo').value;
+            const cantidad = document.getElementById('cantidadInsumo').value;
+
+            if (!producto || !cantidad) return alert('Complete todos los campos');
+
+            registros.push({
+                accion: 'Insumo Registrado',
+                detalle: `Producto: ${producto} | Cantidad: ${cantidad}`,
+                fecha: new Date().toLocaleDateString()
+            });
+            actualizarTabla();
+        }
+
+        function actualizarTabla() {
+            const tbody = document.getElementById('registrosTable');
+            tbody.innerHTML = '';
+            registros.forEach(reg => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${reg.accion}</td>
+                        <td>${reg.detalle}</td>
+                        <td>${reg.fecha}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
